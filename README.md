@@ -5,4 +5,4 @@ It is used in Frontend with frameworks and libraries like angular, Reactjs, Vuej
 It is used in backend with Nodejs.
 It is used in developing mobile applications through ReactNative, ionic.
 It is used in developing desktop applications through electron.
-Due to its niche communities and modules on the internet. We should take care while using that modules.
+Due to its niche communities and modules on the internet. We should take care while using that modules like last updated time and regular security fixes etc.,
