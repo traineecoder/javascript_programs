@@ -162,7 +162,45 @@ console.log(false || logicalOr++); // 44 and it is coerced to number, and number
 console.log(!7979);// coerced to boolean and opposite to truthy is false
 
 /************** The Switch Statment **************/
-
+// let inputDay = prompt("What is today's weekday?").toLowerCase();
+// switch (inputDay) {
+//     case 'monday': // inputDay === monday
+//         console.log("Have to work on", inputDay);
+//         break;
+//     case 'tuesday':
+//         console.log("Have to work on", inputDay);
+//         break;
+//     case 'wednesday':
+//         console.log("Have to work on", inputDay);
+//         break;
+//     case 'thursday':
+//         console.log("Have to work on", inputDay);
+//         break;
+//     case 'friday':
+//         console.log("Have to work on", inputDay);
+//         break;
+//     case 'saturday':
+//         console.log("Have to work on", inputDay);
+//         break;
+//     case 'sunday':
+//         console.log("holiday on", inputDay);
+//         break;
+//     default:
+//         console.log("well, thats not a weekday");
+// }
 /************** Statements and Expressions **************/
 
-/************** The conditional (ternery) operator **************/
+// 3+6 it is an expression that is evaluated into a value
+
+console.log("hello world"); // It is a statement and performs an action
+
+/************** The conditional (ternary) operator **************/
+let ternary;
+ternary = 13 > 7 ? (console.log("HELLO"), "catch the value") : console.log("World");
+console.log(ternary);
+
+let ternaryOrder;
+ternaryOrder = 12 < 4 ? "hello" : 3 > 4 ? "world" : "universe"; // we can see right to left
+console.log(ternaryOrder);
+
+// 3>7?45<33?(5:2):3; //looks valid but it is error beacause of improper grouping
