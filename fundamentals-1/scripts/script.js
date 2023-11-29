@@ -149,15 +149,18 @@ console.log(0 == [], 0 == '0', [] == '0'); // hmm...
 
 /************** Logical operators **************/
 let logicalAnd = 7;
+let nol;
 console.log(true && console.log("hello")); // undefined and it is falsy, hence result is false in conditions
 console.log(false && console.log("hello")); // false
 console.log(false && logicalAnd++);// false
 console.log(true && logicalAnd++);// 7
-console.log(typeof (true && logicalAnd++));// coerced to number, and number is truthy
+console.log(typeof (true && 0));// coerced to number, and returns that number
+console.log(nol && false);// coerced to undefined, and returns undefined and also it doesn't check the other operand
 
 let logicalOr = 44;
 console.log(true || logicalOr++); // true
-console.log(false || logicalOr++); // 44 and it is coerced to number, and number is truthy
+console.log(false || logicalOr++); // 44 and it is coerced to number, and return
+console.log(logicalOr || false); // coerced to number and returns that number
 
 console.log(!7979);// coerced to boolean and opposite to truthy is false
 
