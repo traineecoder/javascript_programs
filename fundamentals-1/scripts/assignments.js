@@ -1,3 +1,5 @@
+/*@@@@@@@@@ Fundamentals part - 1 @@@@@@@@@*/
+
 /******* Values and Variables  *******/
 const country = "Antartica";
 const continent = "Antartica";

@@ -1,3 +1,5 @@
+/*@@@@@@@@@ Fundamentals part - 1 @@@@@@@@@*/
+
 /************** Values and Variables **************/
 let a = "Hello World";
 // if (a === "Hello World")
