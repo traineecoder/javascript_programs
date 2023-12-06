@@ -61,11 +61,82 @@ const function1 = hello => hello5("function calling with arrow functions ", "woh
 console.log(function1());
 
 /************** Introduction to arrays **************/
+const planets = ['Earth', 'Mercury', 'Mars', 'Saturn', 'Jupiter'];
+console.log(planets);
+// here length is a property
+console.log(planets.length);
+console.log(planets[planets.length - 1]);
+const arrayValues = [hello("hello"), hello("hi")];
+console.log(arrayValues);
+
+const galaxies = new Array('Milky way', 'Andromeda');
+console.log(galaxies);
 
 
-/************** Functions **************/
-/************** Functions **************/
-/************** Functions **************/
-/************** Functions **************/
-/************** Functions **************/
-/************** Functions **************/
+/************** basic array operations **************/
+
+const countries = ['Nigeria', 'Kenya', 'Uganada', 'Zimbabwe', 'Zambia'];
+
+console.log("length of array is: " + countries.length);
+console.log('popping element...', countries.pop())
+console.log(countries);
+console.log("length of array is: " + countries.length);
+
+console.log('pushing element...');
+console.log("new length is ", countries.push('india'), countries);
+
+// unshift and shift works on first value while push and pop works on end value
+console.log("unshift ", countries.unshift("switzerland"));
+console.log("shift ", countries.shift());
+
+console.log(countries.indexOf('Kenya'));
+console.log(countries.indexOf("abac"));
+
+// includes checks for strict equality
+console.log(countries.includes('Zimbabwe'));
+
+/************** Intrduction to objects **************/
+const hydrogen = { electrons: 1, protons: 1, 's': -1 }; // these are not ordered
+console.log(hydrogen.electrons, hydrogen['electrons'], hydrogen.s);
+
+// const subAtomicParticle = prompt("which sub atomic particle do you want?");
+// console.log(hydrogen[subAtomicParticle]); // we cant use hydrogen.subAtomicParticle it is undefined
+hydrogen.neutron = 0;
+hydrogen['isElement'] = true;
+console.log(hydrogen);
+
+/************** Object methods **************/
+const oxygen = {
+    electrons: 16,
+    protons: 16,
+    use: function () {
+        return "It is very useful in purifying the blood through lungs"
+    }
+}
+console.log(oxygen.use());
+console.log(oxygen['use']());
+
+/************** Iteration: The For Loop **************/
+for (let i = 0; i < 10; i++) {
+    console.log("In for loop", i);
+}
+
+/************** Looping arrays, break and continue **************/
+for (let i = 0; i < planets.length; i++) {
+    console.log(planets[i]);
+}
+
+
+/************** Loop backwards and loops in loops **************/
+
+for (let i = planets.length - 1; i >= 0; i--) {
+    console.log(planets[i]);
+}
+
+
+/************** The while loop **************/
+let i = 0;
+while (i < planets.length) {
+    console.log(planets[i]);
+    i++;
+}
