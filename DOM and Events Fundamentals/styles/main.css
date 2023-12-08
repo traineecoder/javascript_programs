@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
+/* css reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Blocks */
+
+html {
+  min-width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  background-image: linear-gradient(black, grey);
+  font-family: 'Press Start 2P', sans-serif;
+  color: aliceblue;
+}
+
+/* Elements */
+.header--h1 {
+  text-align: center;
+}
+.header--question {
+  position: relative;
+  left: 43%;
+  background-color: white;
+  width: 15%;
+  color: black;
+  padding: 1% 0%;
+  margin: 1% 0%;
+  /* font size doesn't become responsive we have to write media query */
+  font-size: 5rem;
+  text-align: center;
+  /* z-index: 1; */
+}
+.main {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.main--guess {
+  display: inherit;
+  font-family: inherit;
+  margin-left: 5rem;
+  color: black;
+  width: 30vh;
+  font-size: 5rem;
+}
+.main--btn {
+  font-family: inherit;
+  color: black;
+  background-color: lightcyan;
+  margin-top: 1rem;
+  font-size: 2rem;
+  min-height: 4rem;
+}
+.main--message {
+  margin-bottom: 5rem;
+}
