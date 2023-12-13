@@ -3,37 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guessing game</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="styles/main.css" type="text/css" />
-    <script src="scripts/game_script.js" defer></script>
+    <title>Document</title>
+    <script src="scripts/script.js" defer></script>
+    <link rel="stylesheet" href="styles/main2.css" />
   </head>
-
   <body>
-    <header class="header">
-      <h1 class="header--h1">Guessing Game</h1>
-      <p class="header--question">?</p>
-    </header>
-    <main class="main">
-      <article class="main--article-left">
-        <input
-          class="main--guess"
-          type="number"
-          name="input-number"
-          minlength="2"
-          maxlength="3"
-        />
-        <button class="main--btn again">Again</button>
-        <button class="main--btn check">Guess</button>
-      </article>
-      <article class="main--article-right">
-        <p class="main--message">Start Guessing...</p>
-        <p class="main--score">💯 Score <span class="score">20</span></p>
-        <p class="main--high-score">
-          ⚡ Highscore <span class="highscore">0</span>
+    <main>
+      <section>
+        <button class="show-model">Show Model 1</button>
+        <button class="show-model">Show Model 2</button>
+        <button class="show-model">Show Model 3</button>
+      </section>
+      <section class="model hidden">
+        <p class="close"><button class="close-model">&times;</button></p>
+        <h1>Model Window</h1>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur
+          atque animi ex esse. Cum animi deleniti eveniet nam atque dicta, esse
+          in, dignissimos possimus alias nobis tempora quo fugit ipsum. Sunt
+          similique numquam neque expedita praesentium harum minima illo
+          adipisci officia, dolores ratione dignissimos ut accusamus aut?
+          Possimus nemo totam temporibus iure ipsum corrupti, unde, cum ex
+          aperiam, a fuga.
         </p>
-      </article>
+      </section>
+      <section class="overlay hidden"></section>
     </main>
-    <footer class="footer"></footer>
   </body>
 </html>

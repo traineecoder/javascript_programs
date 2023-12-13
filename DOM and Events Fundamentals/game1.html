@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guessing game</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="styles/main.css" type="text/css" />
+    <script src="scripts/game_script.js" defer></script>
+  </head>
+
+  <body>
+    <header class="header">
+      <h1 class="header--h1">Guessing Game</h1>
+      <p class="header--question">?</p>
+    </header>
+    <main class="main">
+      <article class="main--article-left">
+        <input
+          class="main--guess"
+          type="number"
+          name="input-number"
+          minlength="2"
+          maxlength="3"
+        />
+        <button class="main--btn again">Again</button>
+        <button class="main--btn check">Guess</button>
+      </article>
+      <article class="main--article-right">
+        <p class="main--message">Start Guessing...</p>
+        <p class="main--score">💯 Score <span class="score">20</span></p>
+        <p class="main--high-score">
+          ⚡ Highscore <span class="highscore">0</span>
+        </p>
+      </article>
+    </main>
+    <footer class="footer"></footer>
+  </body>
+</html>
