@@ -1,4 +1,6 @@
 "use strict"; // functions are "block" scoped when strict mode is present
+
+/************** scopes **************/
 const m = "global variable";
 let n = "earth";
 var h = "mars";
@@ -43,7 +45,7 @@ const recursion = function () {
 
 recursion();
 
-// changing values in different scopes
+/************** changing values in different scopes **************/
 let numberValue = 23;
 let stringValue = "original string";
 const changeValue = function () {
@@ -56,7 +58,7 @@ changeValue();
 console.log(numberValue);
 console.log(stringValue);
 
-// Hoisting
+/************** Hoisting  **************/
 console.log(hoistedVar); // undefined
 hoistedFunction();
 
@@ -81,6 +83,8 @@ const notHoistedFunction1 = function () {
 let notHoistedFunction2 = function () {
   console.log("not hoisted function 1- const");
 };
+
+/************** window  **************/
 // window is object of all things on the screen
 var a = 1;
 let b = 2; // it will not be in window
@@ -88,35 +92,52 @@ const c = 3; // it will not be in window
 console.log(window.a, window.b, window.c);
 console.log(window.a === a, window.b === b, window.c === c);
 
-// this keyword
+/************** this keyword  **************/
 console.log(this);
 const thisObject = {
   firstName: "earth",
   lastName: "mars",
   getName: function () {
     console.log(this.firstName + " " + this.lastName);
+    // const self = this;
+    // const nestedFunction = function () {
+    //   console.log("accessing this in nested function");
+    //   console.log(self.firstName, self.lastName);
+    // };
+    // nestedFunction();
+    const nestedArrowFunction = () => {
+      console.log("accessing this in nested arrow function");
+      console.log(this.firstName, this.lastName);
+    };
+    nestedArrowFunction();
   },
 };
+
 const otherObject = {
   firstName: "Jupiter",
   lastName: "Saturn",
 };
+
 const thisFunction = function () {
   console.log(this);
 };
+
 const arrowThisFunction = () => console.log(this);
+
 thisFunction();
 arrowThisFunction();
+
 thisObject.getName();
 otherObject.getName = thisObject.getName; // method borrowing
 console.log(thisObject);
 console.log(otherObject);
+
 let exampleThisTest = thisObject.getName;
-// error as this is undefined in regular function and In this scenario it is like undefined.firstName
+// error, As this is undefined in regular function and In this scenario it is like undefined.firstName
 // exampleThisTest();
 // In eventhandler this references to DOM
 
-// Regular vs Arrow Functions
+/************** Regular vs Arrow Functions  **************/
 const arrowFunction = () => {
   const insideArrowFunction = () => {
     console.log(this);
@@ -124,3 +145,29 @@ const arrowFunction = () => {
   insideArrowFunction();
 };
 arrowFunction();
+
+const argumentsFunction = function (a, b) {
+  console.log(arguments);
+};
+const argumentsArrow = (a, b) => {
+  console.log(arguments); //this will cause error
+};
+
+argumentsFunction(22, 34, 343, 243, 42);
+// argumentsArrow();
+
+/************** primitive & reference objects  **************/
+// strings are immutable
+let abb = "123s";
+// abb[1] = 'f' // error
+
+// shallow copy
+const originalObject = {
+  a: 23,
+  b: 33,
+  c: [34, 532],
+};
+// nested objects are effected in both objects
+const shallowObject = Object.assign({}, originalObject);
+
+// deep clone is used with third party libraries
