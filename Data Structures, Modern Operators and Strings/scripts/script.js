@@ -137,7 +137,162 @@ let shortCircuitOr = 33 || 34 || undefined;
 console.log(shortCircuitOr); // 33
 shortCircuitOr = 0 || undefined || null;
 console.log(shortCircuitOr); // null
-// we can use or like (something is not present)|| (push this)
-// we can use and like (something is already present) && (push also this)
+// we can use 'or' like (something is not present(falsy))|| (push this)
+// we can use 'and' like (something is already present(truthy)) && (push this)
+
+// Null coalescing operator
+// it skips only nullish values:null and defined
+const nullish = undefined;
+const nullish2 = 0;
+console.log(nullish ?? 32);
+console.log(nullish2 ?? 32);
+
+// Logical assignment operator
+const logicalAssignment1 = { number: 0 };
+const logicalAssignment2 = { name: "hello" };
+// logicalAssignment1.number ||= 313;
+// logicalAssignment2.number ||= 1223;
+
+// nullish assignment
+logicalAssignment1.number ??= 313;
+logicalAssignment2.number ??= 1223;
+
+console.log(logicalAssignment1.number, logicalAssignment2.number);
+
+logicalAssignment1.name &&= "<Anonymous>";
+logicalAssignment2.name &&= "<Anonymous>";
+
+console.log(logicalAssignment1.name, logicalAssignment2.name);
+
+// Enhanced For loop
+const enhancedFor = ["earth", "mars", "mercury", "jupitor", "Neptune"];
+for (const item of enhancedFor) {
+  console.log(item);
+}
+for (const item of enhancedFor.entries()) {
+  console.log(item);
+}
+console.log([...enhancedFor.entries()]);
+for (const [a, b] of enhancedFor.entries()) {
+  console.log(`${a + 1}: ${b}`);
+}
+
+// enhanced object Literals
+const weekday = ["mon", "tue", "wed", "thurs", "fri", "sat", "sun"];
+const subEnhancedObject = {
+  // enhanced way of writing data in objects
+  [weekday[0]]: "hi, from monday",
+  [weekday[1]]: "hi, from tuesday",
+  [weekday[2]]: "hi, from wednesday",
+  [weekday[3]]: "hi, from thursday",
+  [weekday[4]]: "hi, from friday",
+  [weekday[5]]: "hi, from saturday",
+  [weekday[6]]: "hi, from sunday",
+  [`hello-${1 + 3}`]: "hi is an alternative to hello",
+};
+const mainEnhancedObject = {
+  name: "earth mars",
+  // subEnhancedObject:subEnhancedObject,
+  // printName: function () {
+  //   console.log(this.name);
+  // },
+
+  //es6 enhanced object literals
+  subEnhancedObject,
+  printName() {
+    console.log(this.name);
+  },
+};
+console.log(mainEnhancedObject);
+
+// Optional Chaining(?.)
+// objects
+const objectOptional = {
+  firstName: "hello",
+  lastName: "world",
+  getName() {
+    console.log(this.firstName, this.lastName);
+  },
+  nestObject: {
+    nest1: 22,
+  },
+};
+console.log(objectOptional.nestObject?.nest2); // if object is there get nest2
+console.log(objectOptional.nestObject?.nest1); // if object is there get nest1
+
+// methods
+console.log(objectOptional.nestObject?.getAge?.()); // if function is there call otherwise undefined
+
+// arrays
+const arrayOptional = [{ planet: "earth" }];
+console.log(
+  arrayOptional[0]?.planet,
+  arrayOptional[1]?.planet,
+  arrayOptional.length
+);
+
+// looping objects with objects with object keys, object values, and object entries
+const loopObject = { a: 123, b: 456, c: { a: 789 } };
+console.log(loopObject);
+
+const objectKeys = Object.keys(loopObject);
+console.log(objectKeys);
+
+const objectValues = Object.values(loopObject);
+console.log(objectValues);
+
+const objectEntries = Object.entries(loopObject); // it expects an object
+console.log(objectEntries);
+
+// object entries are comma separated on printing
+// we can destructure and print the values
+// NOTE: refer Destructuring basics
+
+for (const [item, { a }] of objectEntries) {
+  !a || console.log(`${item}: ${a}`);
+}
+
+// ES6 introduced maps and sets
+// Sets
+// Sets are iterable and it accpets iterable structures
+const shapes = new Set([
+  "square",
+  "rectangle",
+  "trapezium",
+  "square",
+  "rectangle",
+]);
+console.log(shapes.has("square"));
+console.log(shapes.add("rhombus"));
+console.log(shapes.add("rhombus"));
+console.log(shapes.size);
+console.log(shapes.delete("trapezium"));
+// shapes.clear();
+console.log(shapes);
+
+for (const item of shapes) {
+  console.log(item);
+}
+
+const speedMeasurements = new Set(["km/s", "m/s", "cm/s"]);
+console.log(...speedMeasurements);
+console.log(new Set("hello world"));
+
+// Maps - Fundamentals
+// In objects, A key is generally a string, But for maps a key can be anything.
+const map = new Map();
+map.set("name", "farm foods");
+map.set(1, "new york");
+console.log(map.set(2, "california"));
+map
+  .set(3, "chicago")
+  .set(4, "boston")
+  .set(5, "N. Virginia")
+  .set(true, "It's True")
+  .set(false, "It's False");
+console.log(map.get("name"));
+console.log(map.get("age")); // undefined if not present
+console.log(map.get(true));
+// Maps - Iterations
 
 /************** Strings **************/
