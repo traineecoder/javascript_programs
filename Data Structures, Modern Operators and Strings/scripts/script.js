@@ -293,6 +293,44 @@ map
 console.log(map.get("name"));
 console.log(map.get("age")); // undefined if not present
 console.log(map.get(true));
+
+console.log(map.get(5 < 3));
+
+const mapArray = [1, 2];
+console.log(map.set(mapArray, "my key is array"));
+console.log(map.get(mapArray));
+console.log(map.has(1));
+console.log(map.delete(5));
+console.log(map.size);
+console.log(map.set(document.querySelector("body"), "I have Object key"));
+console.log(map.get(document.querySelector("body")));
+
 // Maps - Iterations
+
+const map2 = new Map([
+  ["question", "which is the fastest programming language ?"],
+  [1, "Python"],
+  [2, "Java"],
+  [3, "C"],
+  ["correct", 3],
+  [true, "correct 👌"],
+  [false, "wrong ❌"],
+]);
+const objectF = { a: 1, b: 3, c: 5 };
+const map3 = new Map(Object.entries(objectF)); // Object entries returns 2d array which can be used to create maps
+
+// we can destructure the Maps
+console.log(map2.get("question"));
+for (const [key, value] of map2) {
+  if (typeof key === "number") console.log(`Option ${key}: ${value}`);
+}
+const answer = 3;
+console.log(map2.get(map2.get("correct") === answer));
+
+// spread maps
+console.log([...map2]);
+console.log(map2.entries());
+console.log(map2.keys());
+console.log(map2.values());
 
 /************** Strings **************/
