@@ -138,3 +138,23 @@ const gameEvents = new Map([
   [80, "⚽ GOAL"],
   [92, "🔶 Yellow card"],
 ]);
+
+// console.log([...gameEvents.values()]);
+const events = [...new Set(gameEvents.values())];
+
+console.log(events);
+
+gameEvents.delete(64); // it returns true/false and set method returns the new updated map data
+console.log(gameEvents);
+
+const time = [...gameEvents.keys()].pop(); // this will not modify data in gameEvents map
+console.log(
+  `an event happened, on average, every ${time / gameEvents.size} minutues.`
+); // total (time/no. of events) gives the average time of event happening
+const [a, b] = gameEvents.entries(); // entries returns each 1-D array from maps at a time
+// const [a, b] = gameEvents; // without entries method is also same because map is 2d array and we can unpack 1d arrays by array destructuring
+console.log(a, b);
+for (const [min, event] of gameEvents) {
+  const half = min <= 45 ? "FIRST" : "SECOND";
+  console.log(`[ ${half} HALF ] ${min}: ${event}`);
+}

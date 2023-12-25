@@ -334,3 +334,46 @@ console.log(map2.keys());
 console.log(map2.values());
 
 /************** Strings **************/
+const stringA = "Earth is the second closest planet towards the sun";
+const stringB =
+  "Sukho su-30 mki is the fastest aircraft in india and fastest in the world is NASA X-15";
+
+// indexOf(),lastIndexOf() and slice() methods on strings.
+console.log("Antonio Vivaldi"[0]);
+console.log("Antonio Vivaldi".length);
+console.log("Antonio Vivaldi".indexOf("i"));
+console.log("Antonio Vivaldi".lastIndexOf("i"));
+console.log("Antonio Vivaldi".indexOf("Vivaldi"));
+console.log("Antonio Vivaldi".slice(8, 12)); // argument one is inclusive and argument two is exclusive
+console.log("Antonio Vivaldi".slice(0, "Antonio Vivaldi".indexOf(" ")));
+console.log(stringB.slice(0, -5)); // get string by removing last 5 characters, without null terminator('\0')
+console.log(stringB.slice(-15)); // get 15 character string from backwords
+console.log(stringB.slice(-1, -15)); // both are negative argumentes, therefore prints empty
+// When we use methods on strings, the string will automatically converted into objects and regular string returned back
+console.log(typeof stringA); // string
+console.log(typeof new String("hello")); // object
+console.log(typeof stringA.slice(5)); // converts and performs operation on object and returns string
+
+// toLowerCase(), toUpperCase(), trim() method on strings.
+const stringTrim = "   heLLo \n \n";
+console.log(stringA.toLowerCase());
+console.log(stringB.toUpperCase());
+console.log(stringTrim.toLowerCase().trim());
+console.log(
+  stringTrim.trim().toUpperCase()[0] + stringTrim.toLowerCase().trim().slice(1)
+);
+
+// replace(), replaceAll() and usage of regex on strings
+console.log(stringA.toLowerCase().replace("earth", "Mars"));
+console.log(stringA.toLowerCase().replaceAll("the", " "));
+console.log(stringA.toLowerCase().replace(/the/g, " "));
+
+// includes(),startsWith() and endsWith() opeartion on strings
+console.log(stringA.toLowerCase().startsWith("earth"));
+console.log(stringA.toLowerCase().includes("planet"));
+console.log(stringA.toLowerCase().endsWith("planets"));
+
+// split(), join()
+const splitString = ["hi", "lets", "go"];
+console.log(stringA.split(" ")); // split based on the separator
+console.log(splitString.join(" ")); // join by adding separator after each element from array
