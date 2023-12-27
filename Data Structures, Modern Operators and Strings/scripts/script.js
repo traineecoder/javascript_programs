@@ -373,7 +373,11 @@ console.log(stringA.toLowerCase().startsWith("earth"));
 console.log(stringA.toLowerCase().includes("planet"));
 console.log(stringA.toLowerCase().endsWith("planets"));
 
-// split(), join()
+// split(), join(),padStart(),padEnd() and repeat()
 const splitString = ["hi", "lets", "go"];
 console.log(stringA.split(" ")); // split based on the separator
 console.log(splitString.join(" ")); // join by adding separator after each element from array
+
+console.log(stringA.padStart(60, "@"));
+console.log(stringA.padEnd(60, "@"));
+console.log(stringB.repeat(3));
