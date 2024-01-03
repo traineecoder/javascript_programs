@@ -7,3 +7,13 @@ const poll = {
 poll.registerNewAnswer = function () {
   const value = Number(prompt(`${this.question},${this.options}`));
 };
+
+document.body.append(document.createElement("h1"));
+document.querySelector("h1").innerText = "Hello World";
+(function () {
+  const header = document.querySelector("h1");
+  header.style.color = "red";
+  document.querySelector("body").addEventListener("click", function () {
+    header.style.color = "blue"; // by closure we can access and make changes
+  });
+})();

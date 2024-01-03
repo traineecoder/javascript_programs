@@ -139,3 +139,89 @@ const mathFormula = function (a, b) {
 
 const bindMiscillenous = mathFormula.bind(null, 2);
 console.log(bindMiscillenous(3));
+
+// Immediately invoked function expressions
+const normalFunction = function () {
+  console.log("i am a normal function");
+};
+
+(function () {
+  console.log("i am immediate and i have no name");
+})();
+
+(() => console.log("i am immediate and i am in an arrow function"))();
+
+{
+  let privateNumber = 23;
+  var privateString = "abcd";
+}
+// console.log(privateNumber); // error because let is block scoped
+console.log(privateString); // works because var is function scoped
+
+// Closures
+// we don't create/use closure explicitly, it happens automatically and we need to recognize them.
+// closure has the priority over global scope
+let passengerCount = 0;
+const secureBooking = function () {
+  let passengerCount = 0;
+  return function () {
+    // let passengerCount = 0;
+    passengerCount++;
+    console.log(passengerCount);
+  };
+};
+
+const ticketBooker = secureBooking();
+// function func(b) {
+//   // function func() {
+//   //   console.log("ass"); // its prints new line when some thing in them
+//   // }
+
+//   if (b < 0) return 1;
+//   return func(b - 1) + func(b - 1);
+// }
+// console.log(func(3));
+
+ticketBooker(); // It remembers variables outside of its scope because of closure
+ticketBooker();
+secureBooking(); // it executes the function call
+ticketBooker();
+
+console.dir(ticketBooker); // to look closures in ticketBooker
+
+// closure examples
+let f;
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+  // f = 23;
+};
+
+const h = function () {
+  const b = 32;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+g();
+f();
+console.dir(f);
+
+h();
+f();
+console.dir(f);
+
+const boardPassengers = function (n, wait) {
+  const perGroup = n / 3;
+  setTimeout(function () {
+    console.log(`we are now boarding all ${n} passengers`); // with closures this function can remember the varibles
+    console.log(
+      `There are 3 groups and each group contains ${perGroup} passengers.`
+    );
+  }, wait * 1000);
+  console.log(`Will start boarding in ${wait} seconds`);
+};
+boardPassengers(1200, 2);
