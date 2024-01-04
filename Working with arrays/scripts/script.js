@@ -28,3 +28,31 @@ console.log(arr[arr.length - 1]);
 console.log(arr.slice(-1)[0]);
 console.log(arr.at(-1));
 console.log("hello".at(-1));
+
+// forEach method
+arr = ["mars", "mercury", "jupiter", "earth"];
+arr.forEach(function (value, index, array) {
+  console.log(value, index);
+});
+
+// for each with maps and sets
+let hello;
+let map = new Map([
+  ["INR", "India"],
+  ["USA", "US Dollar"],
+  [hello, "hi"],
+]);
+let set = new Set(["earth", "earth", "sun", "mars"]);
+map.forEach(function (value, key, map) {
+  console.log(`${key}: ${value}`);
+});
+set.forEach(function (value, _, set) {
+  console.log(`${value}`);
+});
+
+arr = [100, 123, 114, 521];
+// const newArr = arr.map(function (value) {
+//   return value / 83.2;
+// });
+const newArr = arr.map((value, i) => value * i);
+console.log(newArr);
