@@ -50,9 +50,48 @@ set.forEach(function (value, _, set) {
   console.log(`${value}`);
 });
 
+// map method on arrays - return changed values
 arr = [100, 123, 114, 521];
 // const newArr = arr.map(function (value) {
 //   return value / 83.2;
 // });
 const newArr = arr.map((value, i) => value * i);
 console.log(newArr);
+
+// filter method on arrays - filter values based on condition
+// we can create big method chains by using this methods, which it gets verbose on using for loops
+arr = [-1, -23, 0, 123, 552];
+const filteredArray = arr.filter(function (value) {
+  return value > 0;
+});
+console.log(filteredArray);
+arr = [-1, -23, 0, 123, 552];
+const withdrawalArray = arr.filter((value) => value < 0);
+console.log(withdrawalArray);
+
+// reduce method on arrays - return a single value by computing all array elements
+arr = [1, 2, 3, 4, 5, 6];
+
+const sum = arr.reduce(function (accumulator, value, i, arr) {
+  // console.log(accumulator, value);
+  return accumulator + value;
+}, 0);
+console.log(sum);
+
+arr = [1, 2, 3, 4, 52, 61];
+const maxValue = arr.reduce(function (acc, value) {
+  if (acc > value) return acc;
+  else return value;
+});
+console.log(maxValue);
+
+// method chaining/pipeline
+// for debugging print and check current array
+// overuse of chaining will cause performance issues on big arrays
+// it is bad practice to chain methods that mutate the original array
+arr = [1, 2, 3, 4, 5];
+const chain = arr
+  .filter((value) => value > 0)
+  .map((value, arr) => value * 83.2)
+  .reduce((acc, value) => acc + value, 0);
+console.log(chain);
