@@ -95,3 +95,37 @@ const chain = arr
   .map((value, arr) => value * 83.2)
   .reduce((acc, value) => acc + value, 0);
 console.log(chain);
+
+// find method
+// it only returns first element satisfies the condition
+// find method returns the first element, whereas filter returns an array
+arr = [, 1, 23, 4, -5, 12, 3, -1, 13];
+const findElement = arr.find((value) => value < 0);
+console.log(findElement);
+
+// findIndex method
+// indexOf is similar but findIndex can be used to get index according to condition
+arr = [1, 23, , 421, 2];
+// const indexOfElement = arr.indexOf(42);
+const findIndexElement = arr.findIndex((value) => value === 421);
+console.log(findIndexElement);
+
+// some and every method
+arr = [1, 2, 3, 4, 5, 6, 7];
+
+// EQUALITY
+console.log(arr.includes(7));
+
+// CONDITION: returns true if any value is abides the condition
+const anyValues = arr.some((value) => value > 0);
+console.log(anyValues);
+
+// EVERY: returns true if every value is abides the condition
+const everyValues = arr.every((value) => value > 0);
+console.log(everyValues);
+
+// Separate callback
+const deposit = (value) => value > 0;
+console.log(arr.some(deposit)); // returns boolearn
+console.log(arr.every(deposit)); // returns boolearn
+console.log(arr.filter(deposit)); // returns filtered array
