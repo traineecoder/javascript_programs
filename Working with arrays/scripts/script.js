@@ -129,3 +129,67 @@ const deposit = (value) => value > 0;
 console.log(arr.some(deposit)); // returns boolearn
 console.log(arr.every(deposit)); // returns boolearn
 console.log(arr.filter(deposit)); // returns filtered array
+
+// flat and flatMap
+arr = [
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+];
+console.log(arr.flat()); // flat the arrays in one dimension
+
+arr = [
+  [1, 2, 3, 4],
+  [5, 6, 7, 8, [9, 11]],
+];
+console.log(arr.flat(1));
+console.log(arr.flat(2));
+
+arr = [
+  [1, 2, 3],
+  [1, 4, 5, 6],
+];
+const arrFlatMap = arr.flatMap((value) => value); // flat maps can go only one level deep
+console.log(arrFlatMap);
+
+// sorting arrays
+// it will mutate the original array just like reverse and splice methods
+// sort method works based on strings, so the numbers converted in to strings and sort them with ascii
+arr = [23, 52, 12, 3, 123, 5];
+// console.log(arr.sort((a, b) => a - b));
+console.log(
+  arr.sort((a, b) => {
+    if (a > b) return 1;
+    if (a < b) return -1;
+  })
+);
+
+// Array filling
+arr = [1, 2, 3, 4, 5];
+console.log(new Array(7));
+const arrFill = new Array(5);
+arrFill.fill(34, 2, 4);
+console.log(arrFill);
+const arrayFrom = Array.from({ length: 10 }, (_, i) => i + 1);
+console.log(arrayFrom);
+
+arr = [1, 2, 3, 4, 5, 6, 7, , 0, -1, -2, -3, -4, -5];
+// array count with reduce
+console.log(
+  arr.length,
+  arr.reduce((acc) => ++acc, 0)
+);
+
+// return object with reduce method
+console.log(
+  arr.reduce(
+    (acc, value) => {
+      // console.log(value); // skipped the empty one after 7
+      if (value > 0) ++acc.positive;
+      if (value < 0) ++acc.negative;
+      return acc;
+    },
+    { positive: 0, negative: 0 }
+  )
+);
+
+// title case

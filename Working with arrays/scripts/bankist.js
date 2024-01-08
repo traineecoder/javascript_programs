@@ -58,9 +58,10 @@ const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
 // the array passed to this function will add data to html
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = "";
-  movements.forEach(function (value, i) {
+  const movs = sort ? movements.slice(0).sort((a, b) => a - b) : movements;
+  movs.forEach(function (value, i) {
     // for each value in array this function is executed
     const type = value > 0 ? "deposit" : "withdrawal";
     const html = `
@@ -219,4 +220,23 @@ btnClose.addEventListener("click", function (e) {
     //change label
     labelWelcome.textContent = "Login to get Started";
   }
+});
+
+let sorted = false;
+btnSort.addEventListener("click", function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+});
+
+// Using array from method to get data from the website
+labelBalance.addEventListener("click", function () {
+  const arr = Array.from(
+    document.querySelectorAll(".movements__value"),
+    (value) => {
+      console.log(value);
+      return Number(value.textContent.replace("€", ""));
+    }
+  );
+  console.log(arr);
 });
