@@ -143,3 +143,30 @@ console.log(Date.now());
 // set methods also performs auto correction
 future.setFullYear(2077);
 console.log(future);
+
+/************** Operations with dates **************/
+const DateOp = new Date(2024, 8, 19, 12, 44);
+console.log(+DateOp);
+
+const daysPassed = (date1, date2) =>
+  Math.trunc(Math.abs(date2 - date1) / (24 * 60 * 60 * 1000));
+
+console.log(daysPassed(DateOp, new Date(2024, 8, 23, 18, 44)));
+
+/************** Internationalizing Numbers **************/
+const num = 3243242442.34;
+const options = {
+  style: "currency",
+  unit: "celsius",
+  currency: "EUR",
+  // useGrouping: false,
+};
+
+console.log(new Intl.NumberFormat("hi-IN", options).format(num));
+console.log(new Intl.NumberFormat("en-GB", options).format(num));
+console.log(new Intl.NumberFormat("ja-JP", options).format(num));
+console.log(new Intl.NumberFormat("fr", options).format(num));
+console.log(
+  navigator.language,
+  new Intl.NumberFormat(navigator.language).format(num)
+);
