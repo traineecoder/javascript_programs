@@ -189,9 +189,10 @@ const account = accounts.find((ac) => ac.owner === "Jessica Davis");
 // Event Handlers for login
 // default action in forms is submit, when clicked button
 // Login
-let currentAccount = account1; // always login account1
-updateUI(currentAccount); // update data on screen
-containerApp.style.opacity = 100; // visibility
+let currentAccount, timer;
+// let currentAccount = account1; // always login account1
+// updateUI(currentAccount); // update data on screen
+// containerApp.style.opacity = 100; // visibility
 
 // Experimenting API
 // const now = new Date();
@@ -208,6 +209,32 @@ containerApp.style.opacity = 100; // visibility
 
 // labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(now);
 
+const startLogOutTimer = function () {
+  const tick = function () {
+    const min = String(Math.trunc(i / 60)).padStart(2, 0);
+    const sec = String(i % 60).padStart(2, 0);
+    // In each call, print the remaining time to UI
+    labelTimer.textContent = `${min}:${sec}`;
+
+    // When 0 seconds stop timer and logout user
+    if (i === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = "Log in to get started";
+      containerApp.style.opacity = 0;
+    }
+
+    // decrease time
+    i--;
+  };
+
+  // Set timer to 5 minutes
+  let i = 120;
+  // Call the timer every second
+  tick();
+  const timer = setInterval(tick, 1000);
+  return timer;
+};
+
 btnLogin.addEventListener("click", function (e) {
   e.preventDefault();
   currentAccount = accounts.find(
@@ -217,6 +244,9 @@ btnLogin.addEventListener("click", function (e) {
     inputLoginPin.value = inputLoginUsername.value = "";
     inputLoginPin.blur();
     inputLoginUsername.blur();
+    clearInterval(timer);
+    console.log(timer);
+    timer = startLogOutTimer();
 
     // display UI and message
     labelWelcome.textContent = `Welcome, ${currentAccount.owner.split(" ")[0]}`;
@@ -278,6 +308,10 @@ btnTransfer.addEventListener("click", function (e) {
 
     // update ui
     updateUI(currentAccount);
+
+    // reset timer
+    clearInterval(timer);
+    timer = startLogOutTimer();
   }
 });
 
@@ -289,16 +323,21 @@ btnLoan.addEventListener("click", function (e) {
     amount > 0 &&
     currentAccount.movements.some((value) => value >= amount * 0.1)
   ) {
-    inputLoanAmount.value = "";
-    // add loan
-    currentAccount.movements.push(amount);
+    setTimeout(function () {
+      inputLoanAmount.value = "";
+      // add loan
+      currentAccount.movements.push(amount);
 
-    // Add loan date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      // Add loan date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    // update UI
-    updateUI(currentAccount);
+      // update UI
+      updateUI(currentAccount);
+    }, 2500);
   }
+  // reset timer
+  clearInterval(timer);
+  timer = startLogOutTimer();
 });
 
 btnClose.addEventListener("click", function (e) {

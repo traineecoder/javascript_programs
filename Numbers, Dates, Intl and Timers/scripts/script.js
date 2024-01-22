@@ -170,3 +170,24 @@ console.log(
   navigator.language,
   new Intl.NumberFormat(navigator.language).format(num)
 );
+
+/************** Timers: setTimeout and setInterval **************/
+const arr = ["apple", "Sir Isaac Newton"];
+const timer = setTimeout(
+  (item, scientist) => console.log("Gravity with", item, "and", scientist),
+  3000,
+  ...arr
+); // called after 3 seconds, this concept is called as asynchronous javascript
+
+console.log("waiting... 3 seconds");
+
+if (arr.includes("banana")) {
+  console.log("nope");
+  clearTimeout(timer);
+}
+
+// setTimeout
+setInterval(function () {
+  const now = new Date();
+  console.log(now.getHours(), now.getMinutes(), now.getSeconds());
+}, 1000);
